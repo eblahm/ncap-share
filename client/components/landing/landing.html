@@ -1,6 +1,63 @@
 
 <template name="landing">
-	<div class="container">
-		<h1>hello world</h1>
+	<div class="container landing">
+
+		<div class="row search">
+			<div class="col-xs-4">
+				<input type="text" class="form-control" placeholder="search">
+			</div>
+		</div>
+
+
+		<div class="shared-item">
+			<div class="row">
+				<div class="col-xs-6">
+					<h3>Dory Halbe</h3>
+				</div>
+				<div class="col-xs-6 labels">
+					<h3>
+						<span class="label label-primary">Drills</span>
+						<span class="label label-success">Age Group</span>
+					</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="content">
+						<p>
+							2 x 35 Fly <br>
+							50 back / 75 Breast <br>
+							2 x 100 IM for time <br>
+							off th blocks for time <br>
+						</p>
+					</div>
+					<div class="date">
+						September 14, 2014
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+
+		<form class="share-form">
+			<div class="row">
+				<div class="col-xs-4">
+					Name: <input type="text" name="name">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<textarea class="form-control" rows="3"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<input type="text" class="form-control" placeholder=":tags">
+				</div>
+			</div>
+		</form>
+
 	</div>
 </template>
