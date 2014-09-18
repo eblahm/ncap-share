@@ -1,20 +1,64 @@
 
+@mixin shadow-border {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);;
+  background-image: -ms-linear-gradient(top, #FEFEFE 0%, #D5DEE5 300%);
+  background-image: -moz-linear-gradient(top, #FEFEFE 0%, #D5DEE5 300%);
+  background-image: -o-linear-gradient(top, #FEFEFE 0%, #D5DEE5 300%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEFEFE), color-stop(3, #D5DEE5));
+  background-image: -webkit-linear-gradient(top, #FEFEFE 0%, #D5DEE5 300%);
+  background-image: linear-gradient(to bottom, #FEFEFE 0%, #D5DEE5 300%);
+}
+
 .landing {
+
+  .search {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
   .shared-item {
+    @include shadow-border();
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding: 0 20px 20px;
+    .name {
+      font-family: 'Vidaloka', serif;
+    }
+
+    h3 {
+      margin-top: 10px;
+    }
     .labels {
       text-align: right;
+      h3 {
+        span {
+          border-radius: 15px;
+          padding: 0 1em .1em;
+        }
+      }
     }
     .content {
       padding-right: 20px;
+      font-size: 1.6em;
     }
     .date {
+      font-size: 16px;
       text-align: right;
       position: absolute;
       right: 0;
       bottom: 0;
       margin-right: 1em;
-      font-family: $font-family-monospace;
       white-space: nowrap;
+    }
+  }
+  .share-form {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0 1em .1em;
+    .row {
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
   }
 }
