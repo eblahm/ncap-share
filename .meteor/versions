@@ -27,6 +27,7 @@ minifiers@1.0.2
 minimongo@1.0.2
 mongo@1.0.4
 mrt:moment@2.8.1
+natestrauser:select2@3.4.9
 observe-sequence@1.0.2
 ordered-dict@1.0.0
 particle4dev:sass@0.2.9
