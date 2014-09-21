@@ -42,14 +42,18 @@
 		<hr>
 
 		<form class="share-form">
-			{{#if name}}
+			{{#if teamUnifyUser}}
+			{{#with teamUnifyUser}}
+			<input type="hidden" name="teamUnifyUser" class="form-control" value="{{_id}}">
 			<input type="hidden" name="name" class="form-control" value="{{name}}">
+			{{/with}}
 			{{else}}
 			<div class="row">
 				<div class="col-xs-1 name">
 					Name:
 				</div>
 				<div class="col-xs-4">
+					<input type="hidden" name="teamUnifyUser" value="">
 					<input type="text" name="name" class="form-control" value="">
 				</div>
 			</div>
@@ -63,13 +67,11 @@
 				<div class="col-xs-12">
 					<p>
 						<select id="tags" multiple>
-							<option value="fly">fly</option>
-							<option value="back">back</option>
-							<option value="breast">breast</option>
-							<option value="free">free</option>
+							{{#each tags}}
+							<option val="{{./id}}">{{./name}}</option>
+							{{/each}}
 						</select>
 					</p>
-					<!--<input type="text" class="form-control" placeholder="tags">-->
 				</div>
 			</div>
 			<div class="row">

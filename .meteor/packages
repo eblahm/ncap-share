@@ -4,9 +4,8 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 particle4dev:sass
 mrt:moment
 natestrauser:select2
-
+iron:router
