@@ -31,6 +31,10 @@ Template.landing.helpers({
 
 	tags: function() {
 		return collections.tags.find();
+	},
+
+	posts: function() {
+		return collections.posts.find().fetch();
 	}
 
 });

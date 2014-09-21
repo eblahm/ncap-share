@@ -9,15 +9,17 @@
 		</div>
 
 
+		{{#each posts}}{{#with .}}
 		<div class="shared-item">
 			<div class="row">
 				<div class="col-xs-6 name">
-					<h3>Dory Halbe</h3>
+					<h3>{{creator_name}}</h3>
 				</div>
 				<div class="col-xs-6 labels">
 					<h3>
-						<span class="label label-primary">Drills</span>
-						<span class="label label-success">Age Group</span>
+						{{#each getTags}}{{#with .}}
+						<span class="label" style="background-color: {{color}};">{{name}}</span>
+						{{/with}}{{/each}}
 					</h3>
 				</div>
 			</div>
@@ -26,24 +28,21 @@
 				<div class="col-xs-12">
 					<div class="content">
 						<p>
-							2 x 35 Fly <br>
-							50 back / 75 Breast <br>
-							2 x 100 IM for time <br>
-							off th blocks for time <br>
+							{{{contentHTML}}}
 						</p>
 					</div>
 					<div class="date">
-						September 14, 2014
+						{{dateFormat created 'MMMM Do, YYYY'}}
 					</div>
 				</div>
 			</div>
 		</div>
+		{{/with}}{{/each}}
 
 		<hr>
 
 		<form class="share-form">
-			{{#if teamUnifyUser}}
-			{{#with teamUnifyUser}}
+			{{#if teamUnifyUser}}{{#with teamUnifyUser}}
 			<input type="hidden" name="creator" class="form-control" value="{{_id}}">
 			<input type="hidden" name="creator_name" class="form-control" value="{{name}}">
 			{{/with}}

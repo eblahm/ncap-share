@@ -10,4 +10,20 @@
  * attachments: Files
  */
 
-collections.posts = new Meteor.Collection('posts');
+var Post = function(props) {
+	_.extend(this, props)
+};
+
+Post.prototype.getTags = function() {
+	return collections.tags.find({_id: {$in: this.tags}});
+};
+
+Post.prototype.contentHTML = function() {
+	return this.content.replace(/\n/g, '<br>');
+};
+
+collections.posts = new Meteor.Collection('posts', {
+	transform: function(doc) {
+		return new Post(doc);
+	}
+});

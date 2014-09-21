@@ -9,3 +9,6 @@ particle4dev:sass
 mrt:moment
 natestrauser:select2
 iron:router
+cfs:standard-packages
+cfs:filesystem
+
