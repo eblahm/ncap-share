@@ -59,15 +59,15 @@
 			{{/if}}
 			<div class="row">
 				<div class="col-xs-12">
-					<textarea class="form-control" rows="3"></textarea>
+					<textarea class="form-control" name="content" rows="3"></textarea>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<p>
-						<select id="tags" multiple>
+						<select class="tags" name="tags" multiple>
 							{{#each tags}}
-							<option val="{{./id}}">{{./name}}</option>
+							<option value="{{./_id}}">{{./name}}</option>
 							{{/each}}
 						</select>
 					</p>

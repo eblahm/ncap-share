@@ -19,7 +19,7 @@ Post.prototype.getTags = function() {
 };
 
 Post.prototype.contentHTML = function() {
-	return this.content.replace(/\n/g, '<br>');
+	return _.escape(this.content).replace(/\n/g, '<br>');
 };
 
 collections.posts = new Meteor.Collection('posts', {

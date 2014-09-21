@@ -3,8 +3,8 @@
 Template.landing.rendered = function() {
 	if(!this._rendered) {
 		this._rendered = true;
-		$("#tags").select2({
-			maximumSelectionSize: 3,
+		$(".tags").select2({
+			placeholder: 'tags',
 			width: 'resolve'
 		});
 
@@ -20,6 +20,31 @@ Template.landing.rendered = function() {
 
 
 Template.landing.events({
+	'click .submit button': function(event) {
+		var $form = $(event.currentTarget).closest('.share-form');
+
+		if (!$form.find('[name="creator_name"]').val()) {
+			return alert('Please provide a name');
+		}
+
+		if (!$form.find('[name="content"]').val()) {
+			return alert('Please provide content to share');
+		}
+
+		var data = {
+			tags: [],
+			files: [],
+			created: moment().toDate()
+		};
+		_.each($form.serializeArray(), function(item) {
+			if (item.name === 'tags') {
+				data.tags.push(item.value);
+				return;
+			}
+			data[item.name] = item.value;
+		});
+		collections.posts.insert(data);
+	}
 });
 
 
