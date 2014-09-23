@@ -1,0 +1,13 @@
+
+@mixin shadow-border {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);;
+}
+
+@mixin gradient-background {
+ background-image: -ms-linear-gradient(top, #FEFEFE 0%, #D5DEE5 300%);
+ background-image: -moz-linear-gradient(top, #FEFEFE 0%, #D5DEE5 300%);
+ background-image: -o-linear-gradient(top, #FEFEFE 0%, #D5DEE5 300%);
+ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEFEFE), color-stop(3, #D5DEE5));
+ background-image: -webkit-linear-gradient(top, #FEFEFE 0%, #D5DEE5 300%);
+ background-image: linear-gradient(to bottom, #FEFEFE 0%, #D5DEE5 300%);
+}

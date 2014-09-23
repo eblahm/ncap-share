@@ -1,0 +1,33 @@
+<template name="sharedItem">
+
+<div class="shared-item">
+
+	<div class="row">
+		<div class="col-xs-6 name">
+			<h3>{{creator_name}}</h3>
+		</div>
+		<div class="col-xs-6 labels">
+			<h3>
+				{{#each getTags}}{{#with .}}
+				<span class="label" style="background-color: {{color}};">{{name}}</span>
+				{{/with}}{{/each}}
+			</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="content">
+				<p>
+					{{{contentHTML}}}
+				</p>
+			</div>
+			<div class="date">
+				{{dateFormat created 'MMMM Do, YYYY'}}
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</template>

@@ -1,0 +1,29 @@
+.share-form {
+  @include shadow-border();
+  font-family: 'Open Sans Condensed', sans-serif;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0 1em .1em;
+  textarea {
+    font-size: 16px;
+  }
+  .name {
+    font-family: 'Vidaloka', serif;
+    margin-top: 10px;
+  }
+
+  .row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .tags {
+    width: 100%;
+  }
+  .select2-choices {
+    border-radius: 10px;
+  }
+  .submit {
+    font-family: 'Vidaloka', serif;
+    text-align: right;
+  }
+}
