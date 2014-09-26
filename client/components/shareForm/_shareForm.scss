@@ -9,8 +9,11 @@
   }
   .name {
     font-family: 'Vidaloka', serif;
-    margin-top: 10px;
+    .name-label {
+      margin-top: 10px;
+    }
   }
+
 
   .row {
     margin-top: 10px;
@@ -19,8 +22,24 @@
   .tags {
     width: 100%;
   }
-  .select2-choices {
-    border-radius: 10px;
+  .tags-select2-container {
+    .select2-choices {
+      border-radius: 20px;
+      padding: 6px 6px 0;
+    }
+    .select2-search-choice {
+      padding: 0;
+      border: none;
+      margin-top: 5px;
+      span {
+        font-size: 14px;
+        padding: 0 10px 0 20px;
+        border-radius: 10px;
+        width: 100%;
+        font-weight: bold;
+        color: #ffffff;
+      }
+    }
   }
   .submit {
     font-family: 'Vidaloka', serif;

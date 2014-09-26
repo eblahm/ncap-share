@@ -5,7 +5,11 @@ Template.landing.rendered = function() {
 		this._rendered = true;
 		$(".tags").select2({
 			placeholder: 'tags',
-			width: 'resolve'
+			width: 'resolve',
+			formatSelection: function(tag) {
+				return '<span style="background-color:'+ $(tag.element).data('color') + ';">' + tag.text + "</span>";
+			},
+			containerCssClass: 'tags-select2-container'
 		});
 
 		window.addEventListener('message', function(event) {
