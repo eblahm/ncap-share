@@ -1,9 +1,10 @@
 
 <template name="shareForm">
 <form class="share-form">
+	<input type="hidden" name="_id" value="{{_id}}">
 	{{#if teamUnifyUser}}{{#with teamUnifyUser}}
-	<input type="hidden" name="creator" class="form-control" value="{{_id}}">
-	<input type="hidden" name="creator_name" class="form-control" value="{{name}}">
+	<input type="hidden" name="creator" value="{{_id}}">
+	<input type="hidden" name="creator_name" value="{{name}}">
 	{{/with}}
 	{{else}}
 	<div class="row name">
@@ -18,7 +19,7 @@
 	{{/if}}
 	<div class="row">
 		<div class="col-xs-12">
-			<textarea class="form-control" name="content" rows="3"></textarea>
+			<textarea class="form-control" name="content" rows="3">{{./content}}</textarea>
 		</div>
 	</div>
 	<div class="row">
@@ -32,9 +33,17 @@
 			</p>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-12 submit">
-			<button type="button" class="btn btn-sm btn-danger">SUBMIT</button>
+	<div class="row form-buttons">
+		<div class="col-xs-6">
+			{{#if _id}}
+			<button type="button" class="btn btn-sm btn-default btn-delete">DELETE</button>
+			{{/if}}
+		</div>
+		<div class="col-xs-6">
+			{{#if _id}}
+			<button type="button" class="btn btn-sm btn-default btn-cancel">CANCEL</button>
+			{{/if}}
+			<button type="button" class="btn btn-sm btn-danger btn-submit">SUBMIT</button>
 		</div>
 	</div>
 </form>

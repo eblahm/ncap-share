@@ -9,7 +9,9 @@
 		</div>
 
 		{{#each posts}}{{#with .}}
-			{{> sharedItem}}
+			<div class="shared-item-container">
+				{{> sharedItem}}
+			</div>
 		{{/with}}{{/each}}
 
 		<hr>

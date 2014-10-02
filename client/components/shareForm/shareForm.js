@@ -1,4 +1,11 @@
 
+Template.shareForm.rendered = function() {
+	if(!this._rendered) {
+		this._rendered = true;
+		util.initSelect2();
+	}
+};
+
 var util = {
 	validate: function($form) {
 		if (!$form.find('[name="creator_name"]').val()) {
@@ -13,19 +20,27 @@ var util = {
 		return true;
 	},
 
+	initSelect2: function() {
+		$(".tags").select2({
+			placeholder: 'tags',
+			width: 'resolve',
+			formatSelection: function(tag) {
+				return '<span style="background-color:'+ $(tag.element).data('color') + ';">' + tag.text + "</span>";
+			},
+			containerCssClass: 'tags-select2-container'
+		});
+	},
+
 	reset: function($form) {
 		var container = $form.closest('.share-form-container').get(0);
 		$form.remove();
 		Blaze.render(Template.shareForm, container);
-		$(".tags").select2({
-			placeholder: 'tags',
-			width: 'resolve'
-		});
+		this.initSelect2();
 	}
-}
+};
 
 Template.shareForm.events({
-	'click .submit button': function(event) {
+	'click .btn-submit': function(event) {
 		var $form = $(event.currentTarget).closest('.share-form');
 
 		if (!util.validate($form)) return false;
@@ -45,7 +60,27 @@ Template.shareForm.events({
 		collections.posts.insert(data, function() {
 			util.reset($form);
 		});
+	},
+
+	'click .btn-cancel': function(event) {
+		var container = $(event.currentTarget).closest('.shared-item-container');
+		var $form = container.find('.share-form');
+		var $item = container.find('.shared-item');
+		$form.remove();
+		$item.show();
+	},
+
+	'click .btn-delete': function(event) {
+		var $form = $(event.currentTarget).closest('.share-form');
+		var _id = $form.find('[name="_id"]').val();
+		if (confirm('are you sure you want to delete this item?')) {
+			collections.posts.remove(_id, function(err) {
+				if (err) alert(err);
+				$form.remove();
+			});
+		}
 	}
+
 });
 
 
@@ -60,4 +95,5 @@ Template.shareForm.helpers({
 	}
 
 });
+
 

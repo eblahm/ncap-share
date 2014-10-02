@@ -41,8 +41,10 @@
       }
     }
   }
-  .submit {
+  .form-buttons {
     font-family: 'Vidaloka', serif;
-    text-align: right;
+    div:nth-child(2) {
+      text-align: right;
+    }
   }
 }

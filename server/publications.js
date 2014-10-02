@@ -17,5 +17,5 @@ collections.teamUnifyUsers.allow({
 collections.posts.allow({
 	insert: function() { return true; },
 	update: function() { return true; },
-	remove: function() { return false; }
+	remove: function() { return true; }
 });
