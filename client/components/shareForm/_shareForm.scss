@@ -4,6 +4,7 @@
   border: 1px solid black;
   border-radius: 10px;
   padding: 0 1em .1em;
+  margin: 0 0 1em;
   textarea {
     font-size: 16px;
   }
@@ -14,7 +15,6 @@
     }
   }
 
-
   .row {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -22,18 +22,19 @@
   .tags {
     width: 100%;
   }
+
   .tags-select2-container {
     .select2-choices {
       border-radius: 20px;
-      padding: 6px 6px 0;
     }
+
     .select2-search-choice {
+      margin-top: 10px;
       padding: 0;
       border: none;
-      margin-top: 5px;
       span {
         font-size: 14px;
-        padding: 0 10px 0 20px;
+        padding: 0 10px;
         border-radius: 10px;
         width: 100%;
         font-weight: bold;
