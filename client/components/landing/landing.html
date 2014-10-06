@@ -1,24 +1,23 @@
 
 <template name="landing">
+	{{#if currentUser}}
 	<div class="container landing">
-
 		<div class="row search">
 			<div class="col-xs-4">
 				<input type="text" class="form-control" placeholder="search">
 			</div>
 		</div>
-
 		{{#each posts}}{{#with .}}
 			<div class="shared-item-container">
 				{{> sharedItem}}
 			</div>
 		{{/with}}{{/each}}
-
 		<hr>
-
 		<div class="share-form-container">
 			{{> shareForm}}
 		</div>
-
 	</div>
+	{{else}}
+	<h1>sorry, there was an error :(</h1>
+	{{/if}}
 </template>

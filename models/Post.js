@@ -1,6 +1,6 @@
 
 /**
- * creator: TeamUnifyUser
+ * creator: user
  * creator_name: string
  * title: string
  * created:  date

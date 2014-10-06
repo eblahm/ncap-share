@@ -86,10 +86,6 @@ Template.shareForm.events({
 
 Template.shareForm.helpers({
 
-	teamUnifyUser: function() {
-		return Session.get('teamUnifyUser');
-	},
-
 	tags: function() {
 		return collections.tags.find();
 	}

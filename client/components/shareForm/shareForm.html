@@ -1,27 +1,16 @@
 
 <template name="shareForm">
 <form class="share-form">
-	<input type="hidden" name="_id" value="{{_id}}">
-	{{#if teamUnifyUser}}{{#with teamUnifyUser}}
-	<input type="hidden" name="creator" value="{{_id}}">
-	<input type="hidden" name="creator_name" value="{{name}}">
-	{{/with}}
-	{{else}}
-	<div class="row name">
-		<div class="col-xs-1 name-label">
-			Name:
-		</div>
-		<div class="col-xs-4">
-			<input type="hidden" name="creator" value="">
-			<input type="text" name="creator_name" class="form-control" value="">
-		</div>
-	</div>
-	{{/if}}
+	{{#if _id}}<input type="hidden" name="_id" value="{{_id}}">{{/if}}
+	<input type="hidden" name="creator" value="{{currentUser._id}}">
+	<input type="hidden" name="creator_name" value="{{currentUser.profile.name}}">
+
 	<div class="row">
 		<div class="col-xs-12">
 			<textarea class="form-control" name="content" rows="3">{{./content}}</textarea>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-xs-12">
 			<p>
