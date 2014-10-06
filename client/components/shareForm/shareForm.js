@@ -8,10 +8,6 @@ Template.shareForm.rendered = function() {
 
 var util = {
 	validate: function($form) {
-		if (!$form.find('[name="creator_name"]').val()) {
-			alert('Please provide a name')
-			return false;
-		}
 
 		if (!$form.find('[name="content"]').val()) {
 			alert('Please provide content to share');
@@ -21,27 +17,35 @@ var util = {
 	},
 
 	initSelect2: function() {
-		$(".tags").select2({
-			placeholder: 'tags',
-			width: 'resolve',
-			formatSelection: function(tag) {
-				return '<span style="background-color:'+ $(tag.element).data('color') + ';">' + tag.text + "</span>";
-			},
-			containerCssClass: 'tags-select2-container'
+		$('.tags-select').each(function() {
+			$(this).select2({
+				placeholder: 'tags',
+				width: 'resolve',
+				formatSelection: function(tag) {
+					return '<span style="background-color:'+ $(tag.element).data('color') + ';">' + tag.text + "</span>";
+				},
+				containerCssClass: 'tags-select2-container'
+			});
 		});
 	},
 
-	reset: function($form) {
+	resetForm: function($form) {
 		var container = $form.closest('.share-form-container').get(0);
 		$form.remove();
 		Blaze.render(Template.shareForm, container);
 		this.initSelect2();
+	},
+
+	resetItem: function($form) {
+		var $container = $form.closest('.shared-item-container');
+		$form.remove();
+		$container.find('.shared-item').show();
 	}
 };
 
 Template.shareForm.events({
 	'click .btn-submit': function(event) {
-		var $form = $(event.currentTarget).closest('.share-form');
+		var $form = $(event.currentTarget).closest('.share-form'), _id;
 
 		if (!util.validate($form)) return false;
 
@@ -57,9 +61,18 @@ Template.shareForm.events({
 			}
 			data[item.name] = item.value;
 		});
-		collections.posts.insert(data, function() {
-			util.reset($form);
-		});
+		if (data._id) {
+			_id = data._id;
+			delete data._id;
+			collections.posts.update(_id, {$set: data}, function(err) {
+				console.error(err);
+				util.resetItem($form);
+			});
+		} else {
+			collections.posts.insert(data, function() {
+				util.resetForm($form);
+			});
+		}
 	},
 
 	'click .btn-cancel': function(event) {
@@ -86,7 +99,7 @@ Template.shareForm.events({
 
 Template.shareForm.helpers({
 
-	tags: function() {
+	allTags: function() {
 		return collections.tags.find();
 	}
 

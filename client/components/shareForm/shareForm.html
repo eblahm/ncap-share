@@ -14,9 +14,9 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<p>
-				<select class="tags" name="tags" multiple>
-					{{#each tags}}
-					<option data-color="{{./color}}" value="{{./_id}}">{{./name}}</option>
+				<select class="tags-select" name="tags" multiple>
+					{{#each allTags}}
+					<option data-color="{{./color}}" value="{{./_id}}" {{selectedIfIn ../tags ./_id}}>{{./name}}</option>
 					{{/each}}
 				</select>
 			</p>
