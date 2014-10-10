@@ -7,6 +7,7 @@
 				<input type="text" class="form-control" placeholder="search">
 			</div>
 		</div>
+				{{> query}}
 		{{#each posts}}{{#with .}}
 			<div class="shared-item-container">
 				{{> sharedItem}}

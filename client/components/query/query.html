@@ -1,0 +1,11 @@
+<template name="query">
+<div class="row query">
+	<div class="col-xs-4">
+		<div class="appliedTags">
+		{{#each appliedTags}}
+		<span class="label tag-label" style="background-color: {{color}};" data-id="{{_id}}">{{name}}</span>
+		{{/each}}
+		</div>
+	</div>
+</div>
+</template>

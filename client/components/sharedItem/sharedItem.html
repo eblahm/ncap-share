@@ -9,7 +9,7 @@
 		<div class="col-xs-6 labels">
 			<h3>
 				{{#each getTags}}{{#with .}}
-				<span class="label" style="background-color: {{color}};">{{name}}</span>
+				<span class="label tag-label" style="background-color: {{color}};" data-id="{{_id}}">{{name}}</span>
 				{{/with}}{{/each}}
 			</h3>
 		</div>

@@ -21,14 +21,18 @@ Template.landing.rendered = function() {
 };
 
 Template.landing.events({
-
+	'click .tag-label': function(evt){
+		var _id = $(evt.currentTarget).data('id');
+		Session.set('query', {tags: _id});
+	}
 });
 
 
 Template.landing.helpers({
 
 	posts: function() {
-		return collections.posts.find().fetch();
+		var query = Session.get('query') || {};
+		return collections.posts.find(query);
 	}
 
 });
