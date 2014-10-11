@@ -1,6 +1,6 @@
 <template name="sharedItem">
 
-<div class="shared-item" data-id="{{_id}}">
+<div class="shared-item {{#if eq currentUser._id creator}}owned-shared-item{{/if}}" data-id="{{_id}}">
 
 	<div class="row">
 		<div class="col-xs-6 name">
@@ -17,7 +17,10 @@
 
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="content">
+			<div 
+				class="content {{#if eq currentUser._id creator}}hint--left{{/if}}"
+				data-hint="{{#if eq currentUser._id creator}}Double click to edit{{/if}}"
+			>
 				<p>
 					{{{contentHTML}}}
 				</p>
