@@ -21,10 +21,6 @@ Template.landing.rendered = function() {
 };
 
 Template.landing.events({
-	'click .tag-label': function(evt){
-		var _id = $(evt.currentTarget).data('id');
-		Session.set('query', {tags: _id});
-	}
 });
 
 
