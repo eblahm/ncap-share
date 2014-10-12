@@ -24,6 +24,19 @@
   .tags-select {
     width: 100%;
   }
+	.active-attachment {
+		font-weight: bold;
+		font-size: 14px;
+		span {
+			margin-left: 5px;
+		}
+		i {
+			font-size: 20px;
+			line-height: 14px;
+			padding: 0px 4px 1px 0px;
+			margin-bottom: 2px;
+		}
+	}
 
   .tags-select2-container {
 
@@ -51,4 +64,24 @@
       text-align: right;
     }
   }
+	.btn-file {
+		font-size: 12px;
+		position: relative;
+		overflow: hidden;
+	}
+	.btn-file input[type=file] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-width: 100%;
+		min-height: 100%;
+		font-size: 100px;
+		text-align: right;
+		filter: alpha(opacity=0);
+		opacity: 0;
+		outline: none;
+		background: white;
+		cursor: inherit;
+		display: block;
+	}
 }

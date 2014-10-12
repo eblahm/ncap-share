@@ -18,6 +18,12 @@ Post.prototype.getTags = function() {
 	return collections.tags.find({_id: {$in: this.tags}});
 };
 
+Post.prototype.getFiles = function() {
+	return _.map(this.files, function(id) {
+		return collections.attachments.findOne(id);
+	});
+};
+
 Post.prototype.contentHTML = function() {
 	return _.escape(this.content).replace(/\n/g, '<br>');
 };
@@ -27,3 +33,8 @@ collections.posts = new Meteor.Collection('posts', {
 		return new Post(doc);
 	}
 });
+
+collections.attachments = new FS.Collection("attachments", {
+  stores: [new FS.Store.FileSystem("attachments", {path: "~/.uploads"})]
+});
+

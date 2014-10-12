@@ -59,6 +59,10 @@ Template.shareForm.events({
 				data.tags.push(item.value);
 				return;
 			}
+			if (item.name === 'attachment') {
+				data.files.push(item.value);
+				return;
+			}
 			data[item.name] = item.value;
 		});
 		if (data._id) {
@@ -73,6 +77,25 @@ Template.shareForm.events({
 				util.resetForm($form);
 			});
 		}
+	},
+
+  'change .attachments-input': function(event) {
+		var $form = $(event.currentTarget).closest('form');
+		var $attachments = $form.find('.attachments-list');
+    FS.Utility.eachFile(event, function(file) {
+      collections.attachments.insert(file, function (err, fileObj) {
+				if (err) 
+					alert('sorry, there was an error uploading your file :(');
+				else 
+					$attachments.append(Blaze.toHTMLWithData(Template.activeAttachment, fileObj));
+
+				$input.val(null);
+      });
+    });	
+	},
+
+	'click .remove-attachment': function(event){
+		$(event.currentTarget).closest('.active-attachment').remove();
 	},
 
 	'click .btn-cancel': function(event) {

@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div 
-				class="content {{#if eq currentUser._id creator}}hint--left{{/if}}"
+				class="content {{#if eq currentUser._id creator}}hint--top{{/if}}"
 				data-hint="{{#if eq currentUser._id creator}}Double click to edit{{/if}}"
 				>
 				<p>
@@ -28,6 +28,20 @@
 			<div class="date">
 				{{dateFormat created 'MMMM Do, YYYY'}}
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 attachments">
+			{{#if files.length}}
+			<strong>Attachments:</strong>
+			<ul>
+			{{#each getFiles}}
+				<li>
+					<a href="/uploads/{{_id}}">{{original.name}}</a>
+				</li>
+			{{/each}}
+			</ul>
+			{{/if}}
 		</div>
 	</div>
 

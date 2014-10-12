@@ -22,11 +22,23 @@
 			</p>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-12 attachments-list">
+			{{#if _id}}
+			{{#each getFiles}}
+				{{> activeAttachment}}
+			{{/each}}
+			{{/if}}
+		</div>
+	</div>
 	<div class="row form-buttons">
 		<div class="col-xs-6">
 			{{#if _id}}
 			<button type="button" class="btn btn-sm btn-default btn-delete">DELETE</button>
 			{{/if}}
+			<span class="btn btn-default btn-file">
+					ATTACH FILE <input type="file" class="attachments-input">
+			</span>
 		</div>
 		<div class="col-xs-6">
 			{{#if _id}}
@@ -37,3 +49,11 @@
 	</div>
 </form>
 </template>
+
+<template name="activeAttachment"> 
+	<div class="active-attachment">
+		<i class="btn btn-xs btn-default remove-attachment">&#215;</i><span>{{original.name}}</span>
+		<input type="hidden" name="attachment" value="{{_id}}">
+	</div>
+</template>
+
