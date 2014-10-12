@@ -14,7 +14,7 @@ Router.map(function() {
 			this.response.writeHead(200, {
 				"Content-Type": file.copies.attachments.type
 			});
-			this.response.write(data).end();
+			this.response.end(data);
 		}
 	});
 
