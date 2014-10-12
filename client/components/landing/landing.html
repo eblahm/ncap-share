@@ -4,10 +4,25 @@
 	<div class="container landing">
 		<div class="row search {{#if activeSearch}}hidden{{/if}}">
 			<div class="col-xs-4">
-				<input type="text" class="form-control" placeholder="search">
+				<input id="search-posts" type="text" class="form-control" placeholder="search">
 			</div>
 		</div>
-		{{> query}}
+		<div class="row query">
+			<div class="col-xs-4">
+				<div class="appliedTags">
+				{{#if activeSearch}}
+					<strong>{{posts.count}} Results for </strong>
+					{{#if query.tags}}
+						{{#each appliedTags}}
+							<span class="label search-label applied-tag-query" style="background-color: {{color}};" data-id="{{_id}}"><i>&#215;</i>{{name}}</span>
+						{{/each}}
+					{{else}}
+					<strong>keyword search</strong> <span class="label search-label label-default"><i>&#215;</i><em>{{query.$or.[0].creator_name.$regex}}</em></span>
+					{{/if}}
+				{{/if}}
+				</div>
+			</div>
+		</div>
 		{{#each posts}}{{#with .}}
 			<div class="shared-item-container">
 				{{> sharedItem}}
