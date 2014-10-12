@@ -29,7 +29,12 @@ Template.landing.helpers({
 	posts: function() {
 		var query = Session.get('query') || {};
 		return collections.posts.find(query);
-	}
+	},
+
+	activeSearch: function() {
+		var query = Session.get('query') || {};
+		return !!_.keys(query).length;
+	},
 
 });
 

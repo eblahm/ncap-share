@@ -2,19 +2,19 @@
 <template name="landing">
 	{{#if currentUser}}
 	<div class="container landing">
-		<div class="row search">
+		<div class="row search {{#if activeSearch}}hidden{{/if}}">
 			<div class="col-xs-4">
 				<input type="text" class="form-control" placeholder="search">
 			</div>
 		</div>
-				{{> query}}
+		{{> query}}
 		{{#each posts}}{{#with .}}
 			<div class="shared-item-container">
 				{{> sharedItem}}
 			</div>
 		{{/with}}{{/each}}
+		<div class="share-form-container {{#if activeSearch}}hidden{{/if}}">
 		<hr>
-		<div class="share-form-container">
 			{{> shareForm}}
 		</div>
 	</div>
