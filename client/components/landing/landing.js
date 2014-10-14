@@ -84,7 +84,7 @@ Template.landing.helpers({
 
 	posts: function() {
 		var query = Session.get('query') || {};
-		return collections.posts.find(query);
+		return collections.posts.find(query, {sort: {created: -1}});
 	},
 
 	activeSearch: function() {

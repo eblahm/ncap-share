@@ -2,6 +2,10 @@
 <template name="landing">
 	{{#if currentUser}}
 	<div class="container landing">
+		<div class="share-form-container {{#if activeSearch}}hidden{{/if}}">
+			{{> shareForm}}
+		<hr>
+		</div>
 		<div class="row search {{#if activeSearch}}hidden{{/if}}">
 			<div class="col-xs-4">
 				<input id="search-posts" type="text" class="form-control" placeholder="search">
@@ -28,10 +32,6 @@
 				{{> sharedItem}}
 			</div>
 		{{/with}}{{/each}}
-		<div class="share-form-container {{#if activeSearch}}hidden{{/if}}">
-		<hr>
-			{{> shareForm}}
-		</div>
 	</div>
 	{{else}}
 	<h1>sorry, there was an error :(</h1>
