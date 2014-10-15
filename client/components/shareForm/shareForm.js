@@ -65,6 +65,7 @@ Template.shareForm.events({
 		});
 		if (data._id) {
 			_id = data._id;
+			delete data.created;
 			delete data._id;
 			collections.posts.update(_id, {$set: data}, function(err) {
 				console.error(err);
