@@ -2,7 +2,7 @@
 Template.shareForm.rendered = function() {
 	if(!this._rendered) {
 		this._rendered = true;
-		util.initSelect2();
+		util.initSelect2(this.$('.tags-select'));
 	}
 };
 
@@ -16,16 +16,14 @@ var util = {
 		return true;
 	},
 
-	initSelect2: function() {
-		$('.tags-select').each(function() {
-			$(this).select2({
-				placeholder: 'tags',
-				width: 'resolve',
-				formatSelection: function(tag) {
-					return '<span style="background-color:'+ $(tag.element).data('color') + ';">' + tag.text + "</span>";
-				},
-				containerCssClass: 'tags-select2-container'
-			});
+	initSelect2: function($el) {
+		$el.select2({
+			placeholder: 'tags',
+			width: 'resolve',
+			formatSelection: function(tag) {
+				return '<span style="background-color:'+ $(tag.element).data('color') + ';">' + tag.text + "</span>";
+			},
+			containerCssClass: 'tags-select2-container'
 		});
 	},
 
