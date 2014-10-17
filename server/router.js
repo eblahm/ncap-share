@@ -4,9 +4,9 @@ var util = Npm.require('util');
 
 Router.map(function() {
 
-	this.route('/uploads/:id', {
+	this.route('/ncap-share/uploads/:id', {
 		where: 'server',
-		path: '/uploads/:id',
+		path: '/ncap-share/uploads/:id',
 		action: function () {
 			var file = collections.attachments.findOne(this.params.id);
 			if (!file) return this.response.end('sorry there was an error :(');
