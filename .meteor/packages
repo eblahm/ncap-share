@@ -10,5 +10,4 @@ natestrauser:select2
 iron:router
 cfs:standard-packages
 accounts-password
-cfs:gridfs
 cfs:filesystem

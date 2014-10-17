@@ -34,8 +34,7 @@ collections.posts = new Meteor.Collection('posts', {
 	}
 });
 
-collections.fileStore = new FS.Store.GridFS("files");
 collections.attachments = new FS.Collection("attachments", {
-  stores: [collections.fileStore]
+	stores: [new FS.Store.FileSystem("attachments", {path: "~/.uploads"})]
 });
 
