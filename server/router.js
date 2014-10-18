@@ -13,6 +13,7 @@ Router.map(function() {
 				this.response.statusCode = 404;
 				return this.response.end('sorry there was an error :(');
 			}
+			console.log('reading file ' + file.copies.attachments.key);
 			var data = fs.readFileSync(process.env.HOME + '/.uploads/' + file.copies.attachments.key);
 			this.response.writeHead(200, {
 				"Content-Type": file.copies.attachments.type
