@@ -9,7 +9,10 @@ Router.map(function() {
 		path: '/ncap-share/uploads/:id',
 		action: function () {
 			var file = collections.attachments.findOne(this.params.id);
-			if (!file) return this.response.end('sorry there was an error :(');
+			if (!file) {
+				this.response.statusCode = 404;
+				return this.response.end('sorry there was an error :(');
+			}
 			var data = fs.readFileSync(process.env.HOME + '/.uploads/' + file.copies.attachments.key);
 			this.response.writeHead(200, {
 				"Content-Type": file.copies.attachments.type
