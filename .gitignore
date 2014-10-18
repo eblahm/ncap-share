@@ -2,3 +2,4 @@
 .metoer/local
 
 .uploads
+*.pyc
